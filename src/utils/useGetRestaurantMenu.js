@@ -16,7 +16,7 @@ const useGetRestaurantMenu = (id) => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        let restaurantmenu_api = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${id}&submitAction=ENTER`;
+        let restaurantmenu_api = `https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${latitude}&lng=${longitude}&restaurantId=${id}&submitAction=ENTER`;
 
         const response = await axios.get(restaurantmenu_api);
 
