@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+nav{
+  background: linear-gradient( rgba(5, 150, 0, 0.15), rgba(255, 255, 255, 0.6))
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu li a {
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.menu li a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  /* background: linear-gradient(to right, #1AA37A, #9DFFB3); */
+  /* background: rgb(149, 221, 149); */
+  z-index: -1;
+  transition: 0.5s ease-in-out;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.menu li a:hover,
+.menu li a:focus
+ {
+  color: #76b974;
 }
 
-.App-link {
-  color: #61dafb;
+
+.home::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* width: 350px; */
+    height: 100%;
+    background: rgb(241, 241, 241);
+    z-index: -2;
+}
+.home:after{
+    content: 'Healthy';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 18vw;
+    z-index: -2;
+    font-weight: 700;
+    color: #000;
+    opacity: 0.05;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-scroll{
+  overflow-y: auto;
+  height: calc(100vh - 245px);
+  width: 100%;
+}
+
+.main-scroll-restaurants{
+  overflow-y: auto;
+  height: calc(100vh - 125px);
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #76b974;
+  border-radius: 15px;
+}
+
+.active{
+  color: rgb(2, 105, 2);
+  font-weight: 700;
 }

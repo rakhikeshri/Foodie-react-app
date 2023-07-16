@@ -1,11 +1,53 @@
+import "./App.css";
+import {
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+import Home from "./component/Home";
+import Contact from "./component/Contact";
+import Cart from "./component/Cart";
+import Body from "./component/Body";
+import PageNotFuond from "./component/PageNotFound";
+import { Provider } from "react-redux";
+import store from "./component/Redux/store";
+import Menu from "./component/Menu";
+import Restaurants from "./component/Restaurants";
 
-import './App.css';
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Body />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/restaurants",
+        element: <Restaurants />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/menu/:id",
+        element: <Menu />
+      }
+    ],
+    errorElement: <PageNotFuond />,
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <h1>htl</h1>
-    </div>
+    <Provider store={store}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   );
 }
 
