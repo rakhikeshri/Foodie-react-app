@@ -62,9 +62,15 @@ nav {
   width: 100%;
 }
 
+.cart-scroll {
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+  width: 100%;
+}
+
 ::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+  width: 1px;
+  height: 1px;
 }
 
 ::-webkit-scrollbar-track {
@@ -72,7 +78,7 @@ nav {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #76b974;
+  background-color: #b1eeaf;
   border-radius: 15px;
 }
 
@@ -85,10 +91,16 @@ nav {
   /* Your mobile-specific CSS styles go here */
 
   .main-scroll-restaurants {
-    height: calc(100vh - 65px);
+    height: calc(100vh - 100px);
   }
 
   .main-scroll {
-    height: calc(100vh - 252px);
+    height: calc(100vh - 280px);
+  }
+
+  .cart-scroll {
+    height: calc(100vh - 380px);
+    margin-bottom: 20px;
+    overflow-x: hidden;
   }
 }

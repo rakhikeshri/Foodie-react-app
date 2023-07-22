@@ -68,7 +68,7 @@ const Restaurants = () => {
 
       {restaurants && restaurants.length > 0 ? (
         <div className=" mt-3 ">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 md:gap-2">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 ">
             <RestaurantCard restaurants={restaurants} />
           </div>
           <div className="flex justify-center font-medium items-center mt-5 py-2 px-4 mx-auto w-fit text-lg ">

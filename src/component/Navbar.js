@@ -170,11 +170,11 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/recipe"
+            to="/about"
             activeClassName="text-green-700"
             className="text-xl font-medium p-2"
           >
-            Recipes
+            About
           </NavLink>
         </li>
         <li>

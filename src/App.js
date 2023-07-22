@@ -11,6 +11,7 @@ import PageNotFuond from "./component/PageNotFound";
 import { Provider } from "react-redux";
 import store from "./component/Redux/store";
 import Menu from "./component/Menu";
+import About from "./component/About";
 import Restaurants from "./component/Restaurants";
 
 const appRouter = createBrowserRouter([
@@ -33,6 +34,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/menu/:id",

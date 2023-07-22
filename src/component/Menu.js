@@ -48,11 +48,11 @@ const Menu = () => {
       {cartItems.length > 0 ? (
         <NavLink to="/cart">
           <div
-            className="flex justify-between w-52 font-medium absolute bg-green-200 text-black hover:bg-green-700 rounded hover:text-white p-2 bottom-1 left-1/2 
+            className="flex justify-between w-fit gap-4 font-medium absolute bg-green-200 text-black hover:bg-green-700 rounded hover:text-white p-2 bottom-1 left-1/2 
         transform -translate-x-1/2 hover:shadow-md transition-all cursor-pointer z-50"
           >
             <div>
-              {cartItems.length} Items | {totalAmount}
+              {cartItems.length} Items 
             </div>
             <p>View Cart</p>
           </div>
