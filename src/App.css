@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-nav{
-  background: linear-gradient( rgba(5, 150, 0, 0.15), rgba(255, 255, 255, 0.6))
+nav {
+  background: linear-gradient(rgba(5, 150, 0, 0.15), rgba(255, 255, 255, 0.6));
 }
 
 .menu li a {
@@ -25,43 +24,41 @@ nav{
 }
 
 .menu li a:hover,
-.menu li a:focus
- {
+.menu li a:focus {
   color: #76b974;
 }
 
-
-.home::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    /* width: 350px; */
-    height: 100%;
-    background: rgb(241, 241, 241);
-    z-index: -2;
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* width: 350px; */
+  height: 100%;
+  background: rgb(241, 241, 241);
+  z-index: -2;
 }
-.home:after{
-    content: 'Healthy';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 18vw;
-    z-index: -2;
-    font-weight: 700;
-    color: #000;
-    opacity: 0.05;
+.home:after {
+  content: "Healthy";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 18vw;
+  z-index: -2;
+  font-weight: 700;
+  color: #000;
+  opacity: 0.05;
 }
 
-.main-scroll{
+.main-scroll {
   overflow-y: auto;
-  height: calc(100vh - 245px);
+  height: calc(100vh - 236px);
   width: 100%;
 }
 
-.main-scroll-restaurants{
+.main-scroll-restaurants {
   overflow-y: auto;
-  height: calc(100vh - 125px);
+  height: calc(100vh - 80px);
   width: 100%;
 }
 
@@ -79,7 +76,19 @@ nav{
   border-radius: 15px;
 }
 
-.active{
+.active {
   color: rgb(2, 105, 2);
   font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  /* Your mobile-specific CSS styles go here */
+
+  .main-scroll-restaurants {
+    height: calc(100vh - 65px);
+  }
+
+  .main-scroll {
+    height: calc(100vh - 252px);
+  }
 }

@@ -16,8 +16,8 @@ const ModalPopup = ({setIsOtherRestaurant}) => {
   }
 
   return (
-    <div id="modalBlurPortion" onClick={(e)=>handleOnClose(e)} className="fixed inset-0 bg-black bg-opacity-30 backrop-blur-sm flex justify-center items-center">
-      <div className="bg-white w-96 p-4 rounded shadow">
+    <div id="modalBlurPortion" onClick={(e)=>handleOnClose(e)} className="z-50 fixed inset-0 bg-black bg-opacity-30 backrop-blur-sm flex justify-center items-center">
+      <div className="bg-white w-96 p-4 rounded shadow m-2">
         <h1></h1>
         <p>
           Your cart contains items from other restaurant. Would you like to

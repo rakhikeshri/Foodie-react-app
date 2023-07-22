@@ -3,6 +3,7 @@ import { BiRupee } from "react-icons/bi";
 import { addToCart, addRestaurantInfo } from "./Redux/features/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import ModalPopup from "./ModalPopup";
+import AlternateMenuImg from '.././img/food-alternate-img.jpg'
 
 const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
   const imgUrl =
@@ -43,73 +44,75 @@ const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
               <>
                 <div
                   key={id}
-                  className=" flex justify-between py-3 md:p-2 border-b "
+                  className=" flex justify-between py-4 md:py-5 md:pe-3  border-b"
                 >
-                  <div className="flex flex-col justify-center gap-2 md:w-[85%] w-[80%]">
-                    <h2 className="md:text-lg font-medium">{name && name}</h2>
+                  <div className="flex flex-col justify-center gap-2 md:w-[85%] w-[65%]">
+                    <h2 className="md:text-xl font-medium">{name && name}</h2>
 
                     <div className="flex items-center">
-                      <BiRupee />
-                      <p className="text-base font-bold">
+                      <BiRupee className="md:text-lg" />
+                      <p className="md:text-lg font-bold">
                         {price && (price / 100).toFixed(0)}
                       </p>
                     </div>
-                    <p className="text-sm w-[90%] md:w-4/5 text-gray-400">
+                    <p className="hidden md:flex text-sm w-[90%] md:w-4/5 text-gray-400">
                       {description && description}
                     </p>
                   </div>
 
-                  <div className="w-[20%] md:w-[15%] text-center md:p-3 relative h-full ">
-                    <div>
+                  <div className="w-[33%] md:w-[15%]  flex items-center justify-center ">
+                    <div className="relative">
                       <img
-                        src={imgUrl + imageId}
+                        src={imageId ? imgUrl + imageId : AlternateMenuImg}
                         alt="name"
-                        className="rounded"
+                        className="h-full object-cover w-full rounded"
                       />
-                    </div>
-                    {/* for desktop */}
-                    <button
-                      onClick={() => {
-                        if (restaurantInfo.length === 0) {
-                          dispatch(addToCart(card.info));
-                          dispatch(addRestaurantInfo(currentRestaurantInfo));
-                        } else if (
-                          restaurantInfo.name === currentRestaurantInfo.name &&
-                          restaurantInfo.locality ===
-                            currentRestaurantInfo.locality
-                        ) {
-                          dispatch(addToCart(card.info));
-                          dispatch(addRestaurantInfo(currentRestaurantInfo));
-                        } else {
-                          setIsOtherRestaurant(true);
-                        }
-                      }}
-                      className="hidden md:block bg-slate-100 shadow hover:bg-green-700 hover:text-white transition-all px-5 py-1 rounded absolute bottom-0 left-1/2 transform -translate-x-1/2"
-                    >
-                      Add
-                    </button>
+                      {/* for desktop */}
+                      <button
+                        onClick={() => {
+                          if (restaurantInfo.length === 0) {
+                            dispatch(addToCart(card.info));
+                            dispatch(addRestaurantInfo(currentRestaurantInfo));
+                          } else if (
+                            restaurantInfo.name ===
+                              currentRestaurantInfo.name &&
+                            restaurantInfo.locality ===
+                              currentRestaurantInfo.locality
+                          ) {
+                            dispatch(addToCart(card.info));
+                            dispatch(addRestaurantInfo(currentRestaurantInfo));
+                          } else {
+                            setIsOtherRestaurant(true);
+                          }
+                        }}
+                        className="hidden md:block bg-white shadow hover:bg-green-700 hover:text-white transition-all font-medium py-1 px-4 rounded absolute bottom-[-15px] left-1/2 transform -translate-x-1/2"
+                      >
+                        Add
+                      </button>
 
                       {/* for mobiles */}
-                    <button
-                      onClick={() => {
-                        if (restaurantInfo.length === 0) {
-                          dispatch(addToCart(card.info));
-                          dispatch(addRestaurantInfo(currentRestaurantInfo));
-                        } else if (
-                          restaurantInfo.name === currentRestaurantInfo.name &&
-                          restaurantInfo.locality ===
-                            currentRestaurantInfo.locality
-                        ) {
-                          dispatch(addToCart(card.info));
-                          dispatch(addRestaurantInfo(currentRestaurantInfo));
-                        } else {
-                          setIsOtherRestaurant(true);
-                        }
-                      }}
-                      className="md:hidden bg-slate-100 shadow hover:bg-green-700 hover:text-white transition-all md:px-5 px-3 py-1 rounded mt-2 text-xs"
-                    >
-                      Add
-                    </button>
+                      <button
+                        className="block md:hidden bg-white shadow hover:bg-green-700 hover:text-white transition-all font-medium text-xs p-1 px-3 rounded absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 "
+                        onClick={() => {
+                          if (restaurantInfo.length === 0) {
+                            dispatch(addToCart(card.info));
+                            dispatch(addRestaurantInfo(currentRestaurantInfo));
+                          } else if (
+                            restaurantInfo.name ===
+                              currentRestaurantInfo.name &&
+                            restaurantInfo.locality ===
+                              currentRestaurantInfo.locality
+                          ) {
+                            dispatch(addToCart(card.info));
+                            dispatch(addRestaurantInfo(currentRestaurantInfo));
+                          } else {
+                            setIsOtherRestaurant(true);
+                          }
+                        }}
+                      >
+                        Add
+                      </button>
+                    </div>
                   </div>
                 </div>
               </>

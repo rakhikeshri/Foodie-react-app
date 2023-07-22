@@ -31,7 +31,7 @@ const RestaurantCard = ({ restaurants }) => {
             <>
               <div
                 key={id}
-                className="hover:border-gray-300 hover:shadow flex flex-col gap-1 cursor-pointer rounded transition-all border-white border p-4"
+                className="hover:border-gray-300 hover:shadow flex flex-col md:gap-1 cursor-pointer rounded transition-all border-gray-200 md:border-white border p-4"
                 onClick={() => openRestaurantMenu(id)}
               >
                 <img
@@ -40,13 +40,13 @@ const RestaurantCard = ({ restaurants }) => {
                   className="rounded"
                 />
 
-                <h2 className="text-lg font-medium mt-1">{name}</h2>
+                <h2 className="text-xl font-bold mt-1">{name}</h2>
                 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-800 text-sm">
                   {cuisines && cuisines.join(", ")}
                 </p>
 
-                <div className="flex justify-between text-xs mt-2">
+                <div className="flex justify-between text-sm mt-2">
                   <div className="flex items-center gap-2 text-sm bg-slate-200 px-1 rounded w-fit">
                     <IoStar className="text-green-700" />
                     <p className="text-green-700 font-bold">{avgRating}</p>

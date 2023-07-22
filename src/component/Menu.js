@@ -48,8 +48,8 @@ const Menu = () => {
       {cartItems.length > 0 ? (
         <NavLink to="/cart">
           <div
-            className="flex justify-between w-60 absolute bg-green-200 text-black hover:bg-green-700 rounded hover:text-white p-2 bottom-0 left-1/2 
-        transform -translate-x-1/2 hover:shadow-md transition-all cursor-pointer font-normal"
+            className="flex justify-between w-52 font-medium absolute bg-green-200 text-black hover:bg-green-700 rounded hover:text-white p-2 bottom-1 left-1/2 
+        transform -translate-x-1/2 hover:shadow-md transition-all cursor-pointer z-50"
           >
             <div>
               {cartItems.length} Items | {totalAmount}
@@ -67,7 +67,7 @@ const Menu = () => {
           />
 
           <div className="flex flex-col gap-1 md:gap-2 ">
-            <h2 className="text-lg md:text-2xl font-medium ">{name}</h2>
+            <h2 className="text-lg md:text-2xl font-bold ">{name}</h2>
 
             <div className="flex md:gap-1 flex-col text-sm font-medium text-gray-500">
               <p className="hidden md:flex">
@@ -91,9 +91,9 @@ const Menu = () => {
         <div className="flex flex-col md:items-end gap-3 md:gap-4 my-auto mt-5 md-mt-auto">
           <div className="flex gap-2 items-center">
             <CgTimelapse className="text-xl" />
-            <p className="font-medium me-2">{sla?.slaString}</p>
+            <p className="font-bold me-2">{sla?.slaString}</p>
             <HiOutlineCurrencyRupee className="text-2xl" />
-            <p className="font-medium">
+            <p className="font-bold">
               Rs. {costForTwo && costForTwo / 100} for two
             </p>
           </div>

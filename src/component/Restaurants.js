@@ -6,6 +6,7 @@ import { coordsFetch } from "./Redux/features/coordsSlice";
 import Search from "./Search";
 import RestaurantCard from "./RestaurantCard";
 import { GiHotMeal } from "react-icons/gi";
+import { BsFillSuitHeartFill } from "react-icons/bs";
 import RestaurantsShimmer from "./RestaurantsShimmer";
 
 const Restaurants = () => {
@@ -44,8 +45,8 @@ const Restaurants = () => {
   }, []);
 
   return (
-    <div className="md:mt-5">
-      <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2">
+    <div className="main-scroll-restaurants">
+      <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2 md:px-4 md:pt-3 ">
         <Search
           searchRestaurants={searchRestaurants}
           setCity={setCity}
@@ -53,7 +54,7 @@ const Restaurants = () => {
         />
         <div className="flex items-center gap-2">
           {restaurants && (
-            <p className="text-2xl mt-2 font-medium">
+            <p className="text-2xl mt-2 font-bold">
               <span className="capitalize">
                 {restaurants[0]?.data?.slugs?.city}
               </span>
@@ -66,8 +67,22 @@ const Restaurants = () => {
       </div>
 
       {restaurants && restaurants.length > 0 ? (
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-4 pb-5 main-scroll-restaurants mt-5">
-          <RestaurantCard restaurants={restaurants} />
+        <div className=" mt-3 ">
+          <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 md:gap-2">
+            <RestaurantCard restaurants={restaurants} />
+          </div>
+          <div className="flex justify-center font-medium items-center mt-5 py-2 px-4 mx-auto w-fit text-lg ">
+            Made with &nbsp;
+            <BsFillSuitHeartFill className="text-green-700" />
+            &nbsp; by&nbsp;
+            <a
+              href="https://github.com/rakhikeshri?tab=repositories"
+              className="font-bold"
+              target="_blank"
+            >
+              Rakhi Keshri
+            </a>
+          </div>
         </div>
       ) : (
         <RestaurantsShimmer />

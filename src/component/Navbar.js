@@ -75,7 +75,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between h-20 lg:px-16 px-5">
+    <nav className="flex items-center justify-between h-16 lg:px-16 md:h-20 px-5 ">
       <div className="flex items-center">
         <NavLink to="/">
           <img src={logo} alt="Logo" className="lg:h-16 h-10" />
@@ -89,7 +89,7 @@ const Navbar = () => {
           onClick={toggleMenu}
         />
         {isMenuOpen && (
-          <ul className="absolute h-80 top-20 left-0 right-0 flex flex-col justify-evenly items-center bg-white shadow-md pb-5 z-20 ">
+          <ul className="absolute h-80 top-16 left-0 right-0 flex flex-col justify-evenly items-center bg-white shadow-md pb-5 z-20 ">
             <li>
               <NavLink
                 exact
