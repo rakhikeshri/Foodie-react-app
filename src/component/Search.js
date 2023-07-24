@@ -4,7 +4,7 @@ const Search = ({ setCity, searchRestaurants, city }) => {
   return (
     <div>
       <input
-        placeholder="search.."
+        placeholder="search by city.."
         className="border border-black rounded p-2 py-1 me-2"
         onChange={(e) => setCity(e.target.value)}
         value={city}

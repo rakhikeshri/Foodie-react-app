@@ -39,15 +39,15 @@ nav {
   z-index: -2;
 }
 .home:after {
-  content: "Healthy";
+  content: "Foodie";
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 20px;
   font-size: 18vw;
   z-index: -2;
   font-weight: 700;
   color: #000;
-  opacity: 0.05;
+  opacity: 0.03;
 }
 
 .main-scroll {
@@ -64,8 +64,13 @@ nav {
 
 .cart-scroll {
   overflow-y: auto;
-  height: calc(100vh - 100px);
+  height: calc(100vh);
   width: 100%;
+}
+
+.about-scroll {
+  overflow-y: auto;
+  height: calc(100vh - 100px);
 }
 
 ::-webkit-scrollbar {
@@ -91,7 +96,7 @@ nav {
   /* Your mobile-specific CSS styles go here */
 
   .main-scroll-restaurants {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 80px);
   }
 
   .main-scroll {

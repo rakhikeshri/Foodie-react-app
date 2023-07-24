@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const useGetRestaurantMenu = (id) => {  
-  
+const useGetRestaurantMenu = (id) => {
   const [data, setData] = useState({
     menu: [],
-    restaurantInfo: []
-  })
+    restaurantInfo: [],
+    menuError: "",
+  });
 
   const { latitude, longitude } = useSelector((store) => store.coords);
 
@@ -20,18 +19,25 @@ const useGetRestaurantMenu = (id) => {
 
         const response = await axios.get(restaurantmenu_api);
 
-        const menuData = response.data.data?.cards?.find(card => card.groupedCard)
+        const menuData = response.data.data?.cards?.find(
+          (card) => card.groupedCard
+        );
 
-        const newMenu = menuData?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
-        const newRestaurantInfo = response.data.data?.cards[0]?.card?.card?.info;
+        const newMenu =
+          menuData?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
+            ?.itemCards;
 
-        setData(prevData => ({
+        const newRestaurantInfo =
+          response.data.data?.cards[0]?.card?.card?.info;
+
+        setData((prevData) => ({
           menu: newMenu || prevData.menu,
-          restaurantInfo: newRestaurantInfo || prevData.restaurantInfo
+          restaurantInfo: newRestaurantInfo || prevData.restaurantInfo,
         }));
-
       } catch (error) {
-        console.error("Error fetching data:", error.message);
+        setData((prevData) => ({
+          menuError: error.message || prevData.menuError,
+        }));
       }
     };
 

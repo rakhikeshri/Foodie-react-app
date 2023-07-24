@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { IoStar } from "react-icons/io5";
+import AlternateMenuImg from '.././img/food-alternate-img.jpg'
+import { restroImgUrl } from "../utils/constants";
 
 const RestaurantCard = ({ restaurants }) => {
-  const imgUrl =
-    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
-
   const navigate = useNavigate();
 
   const openRestaurantMenu = (id) => {
@@ -26,16 +25,15 @@ const RestaurantCard = ({ restaurants }) => {
             cloudinaryImageId,
           } = data;
 
-
           return (
-            <>
+            
               <div
                 key={id}
-                className="hover:border-gray-300 hover:shadow flex flex-col md:gap-1 cursor-pointer rounded transition-all border-gray-200 md:border-white border p-4"
+                className="hover:border-gray-300 hover:shadow flex flex-col md:gap-1 cursor-pointer rounded transition-all border-gray-200 md:border-white border p-4 md:p-5"
                 onClick={() => openRestaurantMenu(id)}
               >
                 <img
-                  src={imgUrl + cloudinaryImageId}
+                  src={cloudinaryImageId ? restroImgUrl + cloudinaryImageId : AlternateMenuImg}
                   alt="name"
                   className="rounded"
                 />
@@ -55,7 +53,7 @@ const RestaurantCard = ({ restaurants }) => {
                   <span>{costForTwo && costForTwo / 100} FOR TWO</span>
                 </div>
               </div>
-            </>
+            
           );
         })}
     </>

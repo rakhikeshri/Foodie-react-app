@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BiRupee } from "react-icons/bi";
 import { addToCart, addRestaurantInfo } from "./Redux/features/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 import ModalPopup from "./ModalPopup";
 import AlternateMenuImg from '.././img/food-alternate-img.jpg'
+import MenuShimmer from "./MenuShimmer";
+import { menuImgUrl } from "../utils/constants";
 
 const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
-  const imgUrl =
-    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/";
 
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
         <ModalPopup setIsOtherRestaurant={setIsOtherRestaurant} />
       )}
 
-      {menu.length > 0 ? (
+      {menu && menu.length > 0 ? (
         menu
           .filter(({ card }) =>
             card?.info?.name
@@ -31,17 +31,14 @@ const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
           .map(({ card }) => {
             const {
               id,
-              isVeg,
               name,
               price,
               imageId,
-              offerTags,
-              ratings,
               description,
             } = card.info;
 
             return (
-              <>
+              
                 <div
                   key={id}
                   className=" flex justify-between py-4 md:py-5 md:pe-3  border-b"
@@ -63,7 +60,7 @@ const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
                   <div className="w-[33%] md:w-[15%]  flex items-center justify-center ">
                     <div className="relative">
                       <img
-                        src={imageId ? imgUrl + imageId : AlternateMenuImg}
+                        src={imageId ? menuImgUrl + imageId : AlternateMenuImg}
                         alt="name"
                         className="h-full object-cover w-full rounded"
                       />
@@ -115,11 +112,11 @@ const MenuCard = ({ menu, currentRestaurantInfo, menuSearchInput }) => {
                     </div>
                   </div>
                 </div>
-              </>
+              
             );
           })
       ) : (
-        <p>The menu is currently not available</p>
+        <MenuShimmer />
       )}
     </>
   );

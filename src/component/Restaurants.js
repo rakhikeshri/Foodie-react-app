@@ -10,7 +10,9 @@ import { BsFillSuitHeartFill } from "react-icons/bs";
 import RestaurantsShimmer from "./RestaurantsShimmer";
 
 const Restaurants = () => {
-  const restaurants = useGetRestaurants();
+  const restaurantData = useGetRestaurants();
+
+  const {restaurants} = restaurantData
 
   const dispatch = useDispatch();
 
@@ -46,7 +48,7 @@ const Restaurants = () => {
 
   return (
     <div className="main-scroll-restaurants">
-      <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2 md:px-4 md:pt-3 ">
+      <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2 md:px-5 md:pt-3 ">
         <Search
           searchRestaurants={searchRestaurants}
           setCity={setCity}
@@ -71,26 +73,25 @@ const Restaurants = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 ">
             <RestaurantCard restaurants={restaurants} />
           </div>
-          <div className="flex justify-center font-medium items-center mt-5 py-2 px-4 mx-auto w-fit text-lg ">
-            Made with &nbsp;
-            <BsFillSuitHeartFill className="text-green-700" />
-            &nbsp; by&nbsp;
-            <a
-              href="https://github.com/rakhikeshri?tab=repositories"
-              className="font-bold"
-              target="_blank"
-            >
-              Rakhi Keshri
-            </a>
-          </div>
         </div>
       ) : (
         <RestaurantsShimmer />
       )}
+
+      <div className="flex justify-center font-medium items-center mt-5 py-2 px-4 mx-auto w-fit text-lg ">
+        Made with &nbsp;
+        <BsFillSuitHeartFill className="text-green-700" />
+        &nbsp; by&nbsp;
+        <a
+          href="https://github.com/rakhikeshri?tab=repositories"
+          className="font-bold"
+          target="_blank"
+        >
+          Rakhi Keshri
+        </a>
+      </div>
     </div>
   );
 };
 
 export default Restaurants;
-
-// const restaurantMenu = useGetRestaurantMenu(365622);
