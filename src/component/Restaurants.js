@@ -27,7 +27,7 @@ const Restaurants = () => {
 
   // fetching current location (latitude and longitude) for fetching restaurants as per the location
   const getCurrCoords = () => {
-    if (navigator.geolocation && latitude == null && longitude == null) {
+    if ("geolocation" in navigator && latitude == null && longitude == null) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           dispatch(setLatitude(position.coords.latitude));
@@ -36,7 +36,7 @@ const Restaurants = () => {
         (error) => {
           console.error("Error:", error);
         }
-      );
+        );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }

@@ -14,7 +14,8 @@ const RestaurantCard = ({ restaurants }) => {
   return (
     <>
       {restaurants && 
-        restaurants.map(({ data }) => {
+        restaurants.map(({ info }) => {
+          
           const {
             name,
             id,
@@ -23,7 +24,7 @@ const RestaurantCard = ({ restaurants }) => {
             avgRating,
             costForTwo,
             cloudinaryImageId,
-          } = data;
+          } = info;
 
           return (
             

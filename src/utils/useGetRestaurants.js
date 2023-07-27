@@ -17,7 +17,8 @@ const useGetRestaurants = () => {
         let restaurants_api = `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&page_type=DESKTOP_WEB_LISTING`;
         const response = await axios.get(restaurants_api);
 
-        const restroData = response.data?.data?.cards[2]?.data?.data?.cards;
+        // const restroData = response.data?.data?.cards[2]?.data?.data?.cards;
+        const restroData = response.data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants;
         setRestaurantData((prevData) => ({
           restaurants: restroData || prevData.restaurants,
         }));
