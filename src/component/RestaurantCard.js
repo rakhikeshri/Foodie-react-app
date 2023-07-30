@@ -49,9 +49,12 @@ const RestaurantCard = ({ restaurants }) => {
 
               <div className="flex justify-between text-sm mt-2">
                 <div
-                  className={`flex items-center gap-2 font-bold text-sm bg-slate-200 px-1 rounded w-fit 
-                  ${avgRating >= 4 ? "bg-slate-200" : " bg-orange-200"}
-                  ${avgRating >= 4 ? "text-green-700" : " text-orange-700"}
+                  className={`flex items-center gap-2 font-bold text-sm px-1 rounded w-fit 
+                  ${
+                    avgRating >= 4
+                      ? "bg-slate-200 text-green-700"
+                      : "bg-orange-200 text-orange-600"
+                  }
                   `}
                 >
                   <IoStar />
