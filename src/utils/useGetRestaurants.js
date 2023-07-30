@@ -12,24 +12,29 @@ const useGetRestaurants = () => {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-
       try {
         let restaurants_api = `https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&page_type=DESKTOP_WEB_LISTING`;
         const response = await axios.get(restaurants_api);
 
-        // const restroData = response.data?.data?.cards[2]?.data?.data?.cards;
-        const restroData = response.data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle.restaurants;
-        setRestaurantData((prevData) => ({
-          restaurants: restroData || prevData.restaurants,
-        }));
+        const data = response.data.data?.cards;
+        if (data) {
+          const elements = data.filter(
+            (card) => card.card?.card?.gridElements?.infoWithStyle.restaurants
+          );
+          // console.log(elements[0]);
 
+          const restroData =
+            elements[0].card.card.gridElements.infoWithStyle.restaurants;
+          setRestaurantData((prevData) => ({
+            restaurants: restroData || prevData.restaurants,
+          }));
+        }
       } catch (error) {
         console.error("Error fetching data:", error.message);
         setRestaurantData((prevData) => ({
           restaurantError: error.message || prevData.restaurantError,
         }));
       }
-
     };
 
     fetchRestaurants();

@@ -7,16 +7,19 @@ import Search from "./Search";
 import RestaurantCard from "./RestaurantCard";
 import { GiHotMeal } from "react-icons/gi";
 import { BsFillSuitHeartFill } from "react-icons/bs";
+import { MdLocationPin } from "react-icons/md";
 import RestaurantsShimmer from "./RestaurantsShimmer";
 
 const Restaurants = () => {
   const restaurantData = useGetRestaurants();
 
-  const {restaurants} = restaurantData
+  const { restaurants } = restaurantData;
 
   const dispatch = useDispatch();
 
-  const { latitude, longitude } = useSelector((store) => store.coords);
+  const { latitude, longitude, searchedCity } = useSelector(
+    (store) => store.coords
+  );
 
   const [city, setCity] = useState("");
 
@@ -36,7 +39,7 @@ const Restaurants = () => {
         (error) => {
           console.error("Error:", error);
         }
-        );
+      );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
@@ -46,6 +49,7 @@ const Restaurants = () => {
     getCurrCoords();
   }, []);
 
+
   return (
     <div className="main-scroll-restaurants">
       <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2 md:px-5 md:pt-3 ">
@@ -54,18 +58,14 @@ const Restaurants = () => {
           setCity={setCity}
           city={city}
         />
-        <div className="flex items-center gap-2">
-          {restaurants && (
-            <p className="text-2xl mt-2 font-bold">
-              <span className="capitalize">
-                {restaurants[0]?.data?.slugs?.city}
-              </span>
-              &nbsp;Foods
-            </p>
-          )}
-
-          <GiHotMeal className="text-3xl text-green-700" />
-        </div>
+        {searchedCity != "" ? (
+          <div className="flex items-center gap-1">
+            <MdLocationPin className="text-2xl text-green-700" />
+            <p className="text-2xl  font-bold">{searchedCity}</p>
+          </div>
+        ) : (
+          <p className="text-2xl  font-bold">Your Nearest Restaurants</p>
+        )}
       </div>
 
       {restaurants && restaurants.length > 0 ? (
