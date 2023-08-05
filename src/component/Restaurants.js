@@ -5,7 +5,6 @@ import { setLongitude, setLatitude } from "./Redux/features/coordsSlice";
 import { coordsFetch } from "./Redux/features/coordsSlice";
 import Search from "./Search";
 import RestaurantCard from "./RestaurantCard";
-import { GiHotMeal } from "react-icons/gi";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { MdLocationPin } from "react-icons/md";
 import RestaurantsShimmer from "./RestaurantsShimmer";
@@ -49,25 +48,25 @@ const Restaurants = () => {
   useEffect(() => {
     getCurrCoords();
   }, []);
-  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [selectedFilter, setSelectedFilter] = useState("All");
 
   const handleFilterChange = (event) => {
     const selectedValue = event.target.value;
     setSelectedFilter(selectedValue);
   };
 
-
   return (
     <div className="main-scroll-restaurants">
-      <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-2 md:px-5 md:pt-3 ">
-        <Search
-          searchRestaurants={searchRestaurants}
-          setCity={setCity}
-          city={city}
-        />
-       <RestaurantFilter handleFilterChange={handleFilterChange}/>
+      <div className="flex justify-between flex-col md:flex-row items-center gap-2 md:px-5 md:pt-3 ">
+        <div className="hidden md:block">
+          <Search
+            searchRestaurants={searchRestaurants}
+            setCity={setCity}
+            city={city}
+          />
+        </div>
 
-        {searchedCity != "" ? (
+        {searchedCity !== "" ? (
           <div className="flex items-center gap-1">
             <MdLocationPin className="text-2xl text-green-700" />
             <p className="text-2xl  font-bold">{searchedCity}</p>
@@ -75,13 +74,27 @@ const Restaurants = () => {
         ) : (
           <p className="text-2xl  font-bold">Your Nearest Restaurants</p>
         )}
-        
+
+        <div className="md:hidden">
+          <Search
+            searchRestaurants={searchRestaurants}
+            setCity={setCity}
+            city={city}
+          />
+        </div>
+        <RestaurantFilter
+          className="md:hidden"
+          handleFilterChange={handleFilterChange}
+        />
       </div>
 
       {restaurants && restaurants.length > 0 ? (
         <div className=" mt-3 ">
           <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 ">
-            <RestaurantCard restaurants={restaurants}  selectedFilter={selectedFilter}/>
+            <RestaurantCard
+              restaurants={restaurants}
+              selectedFilter={selectedFilter}
+            />
           </div>
         </div>
       ) : (
@@ -96,6 +109,7 @@ const Restaurants = () => {
           href="https://github.com/rakhikeshri?tab=repositories"
           className="font-bold"
           target="_blank"
+          rel="noreferrer"
         >
           Rakhi Keshri
         </a>

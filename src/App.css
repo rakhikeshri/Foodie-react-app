@@ -92,6 +92,11 @@ nav {
   font-weight: 700;
 }
 
+.custom-dropdown {
+  padding: 4px !important;
+  padding-inline: 5px !important;
+}
+
 @media (max-width: 767px) {
   /* Your mobile-specific CSS styles go here */
 
