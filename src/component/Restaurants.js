@@ -9,6 +9,7 @@ import { GiHotMeal } from "react-icons/gi";
 import { BsFillSuitHeartFill } from "react-icons/bs";
 import { MdLocationPin } from "react-icons/md";
 import RestaurantsShimmer from "./RestaurantsShimmer";
+import RestaurantFilter from "./RestaurantFilter";
 
 const Restaurants = () => {
   const restaurantData = useGetRestaurants();
@@ -48,6 +49,12 @@ const Restaurants = () => {
   useEffect(() => {
     getCurrCoords();
   }, []);
+  const [selectedFilter, setSelectedFilter] = useState('All');
+
+  const handleFilterChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedFilter(selectedValue);
+  };
 
 
   return (
@@ -58,6 +65,8 @@ const Restaurants = () => {
           setCity={setCity}
           city={city}
         />
+       <RestaurantFilter handleFilterChange={handleFilterChange}/>
+
         {searchedCity != "" ? (
           <div className="flex items-center gap-1">
             <MdLocationPin className="text-2xl text-green-700" />
@@ -66,12 +75,13 @@ const Restaurants = () => {
         ) : (
           <p className="text-2xl  font-bold">Your Nearest Restaurants</p>
         )}
+        
       </div>
 
       {restaurants && restaurants.length > 0 ? (
         <div className=" mt-3 ">
           <div className="grid lg:grid-cols-4 md:grid-cols-2  gap-3 ">
-            <RestaurantCard restaurants={restaurants} />
+            <RestaurantCard restaurants={restaurants}  selectedFilter={selectedFilter}/>
           </div>
         </div>
       ) : (

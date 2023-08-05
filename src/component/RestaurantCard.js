@@ -4,7 +4,37 @@ import { IoStar } from "react-icons/io5";
 import AlternateMenuImg from ".././img/food-alternate-img.jpg";
 import { restroImgUrl } from "../utils/constants";
 
-const RestaurantCard = ({ restaurants }) => {
+const RestaurantCard = ({ restaurants , selectedFilter }) => {
+  let filteredData = restaurants;
+  if(selectedFilter =="timeAsc"){
+    console.log(filteredData);
+    filteredData =  restaurants.sort((a, b) =>  a.info.sla.deliveryTime - b.info.sla.deliveryTime);
+    console.log(filteredData);
+  }else if(selectedFilter =="timeDesc"){
+    filteredData =  restaurants.sort((a, b) =>  b.info.sla.deliveryTime - a.info.sla.deliveryTime);
+  }
+  else if(selectedFilter =="priceAsc"){
+    console.log(filteredData);
+    filteredData =  restaurants.sort((a, b) => {
+      const costA = parseInt(a.info.costForTwo.replace(/\D/g, ""));
+      const costB = parseInt(b.info.costForTwo.replace(/\D/g, ""));
+      return costA - costB;
+  });
+    console.log(filteredData);
+  }else if(selectedFilter =="priceDesc"){
+    filteredData =  restaurants.sort((a, b) => {
+      const costA = parseInt(a.info.costForTwo.replace(/\D/g, ""));
+      const costB = parseInt(b.info.costForTwo.replace(/\D/g, ""));
+      return costB - costA;
+  });
+  }
+  else if(selectedFilter =="ratingDesc"){
+    console.log(filteredData);
+    filteredData =  restaurants.sort((a, b) => b.info.avgRating - a.info.avgRating);
+    console.log(filteredData);
+  }else if(selectedFilter =="ratingAsc"){
+    filteredData =  restaurants.sort((a, b) => a.info.avgRating - b.info.avgRating);
+  }
   const navigate = useNavigate();
 
   const openRestaurantMenu = (id) => {
@@ -13,8 +43,8 @@ const RestaurantCard = ({ restaurants }) => {
 
   return (
     <>
-      {restaurants &&
-        restaurants.map(({ info }) => {
+      {filteredData &&
+        filteredData.map(({ info }) => {
           const {
             name,
             id,
